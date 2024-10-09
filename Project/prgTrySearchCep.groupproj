@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F038A941-7CB8-44DD-98FF-BBC8FD28E3AF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PrjTrySearchCep.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Example\prjExample.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PrjTrySearchCep">
+        <MSBuild Projects="PrjTrySearchCep.dproj"/>
+    </Target>
+    <Target Name="PrjTrySearchCep:Clean">
+        <MSBuild Projects="PrjTrySearchCep.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrjTrySearchCep:Make">
+        <MSBuild Projects="PrjTrySearchCep.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="prjExample">
+        <MSBuild Projects="Example\prjExample.dproj"/>
+    </Target>
+    <Target Name="prjExample:Clean">
+        <MSBuild Projects="Example\prjExample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjExample:Make">
+        <MSBuild Projects="Example\prjExample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PrjTrySearchCep;prjExample"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PrjTrySearchCep:Clean;prjExample:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PrjTrySearchCep:Make;prjExample:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
